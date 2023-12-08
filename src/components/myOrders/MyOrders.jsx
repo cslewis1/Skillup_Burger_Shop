@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineEye } from "react-icons/ai";
 
-const MyOrders = () => {
+const MyOrders = ({ orders }) => {
   const arr = [1, 2, 3, 4];
 
   return (
@@ -21,8 +21,20 @@ const MyOrders = () => {
           </thead>
 
           <tbody>
-//     Add the code for the table body
-           
+            {arr.map((order) => (
+              <tr>
+                <td>{order}</td>
+                <td>Processing</td>
+                <td>23</td>
+                <td>$2132</td>
+                <td>Card</td>
+                <td>
+                  <Link to={`/orderDetails`}>
+                    <AiOutlineEye />
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </main>

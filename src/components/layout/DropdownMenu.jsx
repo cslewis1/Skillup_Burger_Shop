@@ -16,7 +16,7 @@ function DropdownMenu() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-white">
         <div className="container">
           <a className="navbar-brand" href="#">
           

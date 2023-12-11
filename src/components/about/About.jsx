@@ -1,6 +1,9 @@
 // Write all the code here
 import React from "react";
+import { Link } from "react-router-dom";
+import { IoFastFoodOutline } from "react-icons/io5";
 import me from "../../assets/skj.jpg";
+
 
 const About = () => {
   return (
@@ -17,6 +20,9 @@ const About = () => {
             Explore the various types of food and burgers. Click below to see
             the menu.
           </p>
+          <Link to="/">
+            <IoFastFoodOutline />
+          </Link>
         </article>
 
         <div>

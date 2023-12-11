@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Country, State } from "country-state-city";
 import Popup from "reactjs-popup";
 
 const Shipping = () => {
+  const [state, setState] = useState("");
+
   return (
     <section className="shipping">
       <main>
@@ -39,9 +41,9 @@ const Shipping = () => {
             <select>
               <option value="">State</option>
               {
-                // Enter the code here for country dropdown
-                State.getStatesOfCountry("IN").map((state) => (
-                  <option value={state.name} >
+                // Enter the code here for country dropdown                
+                State && State.getStatesOfCountry("US").map((state) => (
+                  <option value={state.isoCode} key={state.isoCode}>
                     {state.name}
                   </option>
                 ))

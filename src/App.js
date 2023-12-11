@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
 import Home from "./components/home/Home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
@@ -29,7 +30,8 @@ import "./styles/table.scss";
 import "./styles/orderDetails.scss";
 import "./styles/about.scss";
 
-function App() {
+function App() {  
+
   return (
     <Router>
       <Header isAuthenticated={true} />
@@ -38,7 +40,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         // Add the Route for CART
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
         // Add the Route for SHIPPING
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/login" element={<Login />} />

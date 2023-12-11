@@ -1,6 +1,7 @@
 // Write all the code here
 import React from "react";
 import MenuCard from "./MenuCard";
+import Founder from "./Founder";
 import burger1 from "../../assets/burger1.png";
 import burger2 from "../../assets/burger2.png";
 import burger3 from "../../assets/burger3.png";
@@ -10,6 +11,7 @@ const Menu = () => {
   //   increment(item);
   // }
   return (
+    <>
     <section id="menu">
       <h1>Menu</h1>
       <div>
@@ -19,7 +21,7 @@ const Menu = () => {
             price = {5}
           title={"CHEESE BURGER"}
          // incrementItem={incrementItem}
-          delay = {0.1}
+          delay = {0.8}
         />
 
         <MenuCard
@@ -28,7 +30,7 @@ const Menu = () => {
           price = {8}
           title={" VEG CHEESE BURGER"}
           //incrementItem={incrementItem}
-          delay = {0.1}
+          delay = {0.5}
         />
 
         <MenuCard
@@ -41,6 +43,8 @@ const Menu = () => {
         />
       </div>
     </section>
+      <Founder></Founder>
+    </>
   );
 };
 

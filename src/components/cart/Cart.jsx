@@ -1,58 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import burger1 from "../../assets/burger1.png";
 import burger2 from "../../assets/burger2.png";
-// import burger3 here
 import burger3 from "../../assets/burger3.png";
 
-const CartItem = ({ value, title, img, increment, decrement }) => (
-  <div className="cartItem">
-    <div>
-      <h4>{title}</h4>
-      <img src={img} alt="Item" />
-    </div>
-
-    <div>
-      <button onClick={decrement}>-</button>
-      <input type="number" readOnly value={value} />
-      <button onClick={increment}>+</button>
-    </div>
-  </div>
-);
-
 const Cart = () => {
-  const increment = (item) => {};
+  //useState variables
+  const [cheeseburger, setCheeseburger] = useState(0);
+  const [vegCheeseburger, setVegCheeseburger] = useState(0);
+  const [cheeseburgerFries, setCheeseburgerFries] = useState(0);
 
-  const decrement = (item) => {};
+  //Increment and Decrement Cheeseburger Cart
+  function increment1() {
+    setCheeseburger(cheeseburger + 1);
+  }
+
+  function decrement1() {
+    if (cheeseburger > 0) {
+      setCheeseburger(cheeseburger - 1);
+    }
+  }
+
+  //Increment and Decrement Veg Cheeseburger Cart
+  function increment2() {
+    setVegCheeseburger(vegCheeseburger + 1);
+  }
+  function decrement2() {
+    if (vegCheeseburger > 0) {
+      setVegCheeseburger(vegCheeseburger - 1);
+    }
+  }
+
+  //Increment and Decrement Cheeseburger and Fries Cart
+  function increment3() {
+    setCheeseburgerFries(cheeseburgerFries + 1);
+  }
+  function decrement3() {
+    if (cheeseburgerFries > 0) {
+      setCheeseburgerFries(cheeseburgerFries - 1);
+    }
+  }
 
   return (
     <section className="cart">
       <main>
-        <CartItem
-          title={"Cheese Burger"}
-          img={burger1}
-          value={0}
-          increment={() => increment(1)}
-          // Add the function for decrementing the order by 1
-          decrement={() => decrement(1)}
-        />
-        <CartItem
-          title={"Veg Cheese Burger"}
-          img={burger2}
-          value={0}
-          increment={() => increment(2)}
-          // Add the function for decrementing the order by 2
-          decrement={() => decrement(2)}
-        />
+        <div className="cartItem">
+          <div>
+            <h4>{"Cheese Burger"}</h4>
+            <img src={burger1} alt="Item" />
+          </div>
 
-        {/* Fill up the code for Cheese Burger similarly */}
-        <CartItem
-          title={"Cheese Burger with Frence Fries"}
-          img={burger3}
-          value={0}
-          increment={() => increment(3)}
-          decrement={() => decrement(3)}
-        />
+          <div>
+            <button onClick={decrement1}>-</button>
+            <input type="number" readOnly value={cheeseburger} />
+            <button onClick={increment1}>+</button>
+          </div>
+        </div>
+        <div className="cartItem">
+          <div>
+            <h4>{"Veg Cheese Burger"}</h4>
+            <img src={burger2} alt="Item" />
+          </div>
+
+          <div>
+            <button onClick={decrement2}>-</button>
+            <input type="number" readOnly value={vegCheeseburger} />
+            <button onClick={increment2}>+</button>
+          </div>
+        </div>
+
+        <div className="cartItem">
+          <div>
+            <h4>{"Cheese Burger with Fries"}</h4>
+            <img src={burger3} alt="Item" />
+          </div>
+
+          <div>
+            <button onClick={decrement3}>-</button>
+            <input type="number" readOnly value={cheeseburgerFries} />
+            <button onClick={increment3}>+</button>
+          </div>
+        </div>
 
         <article>
           <div>
@@ -65,11 +93,11 @@ const Cart = () => {
           </div>
           <div>
             <h4>Shipping Charges</h4>
-            <p>${5.00}</p>
+            <p>${5.0}</p>
           </div>{" "}
           <div>
             <h4>Total</h4>
-            <p>${5.00 + 5.00 * 0.08 + 28}</p>
+            <p>${5.0 + 5.0 * 0.08 + 28}</p>
           </div>
           <Link to="/shipping">Checkout</Link>
         </article>

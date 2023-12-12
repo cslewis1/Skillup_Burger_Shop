@@ -3,7 +3,8 @@ import { Country, State } from "country-state-city";
 import Popup from "reactjs-popup";
 
 const Shipping = () => {
-  const [state, setState] = useState("");
+  const [countryCode, setCountryCode] = useState("IE");
+  const handleChange = (event) => setCountryCode(event.target.value);
 
   return (
     <section className="shipping">
@@ -22,15 +23,16 @@ const Shipping = () => {
             {/* Compelte the code for the COUNTRY DROPDOWN*/}
             <label>Country</label>
 
-            <select>
-              <option value="">Country</option>
+            <select onChange={handleChange}>
+              <option value={countryCode}>Country</option>
               {
                 // Enter the code here for country dropdown
-                Country.getAllCountries().map((country) => (
-                  <option value={country.name} key={country.isoCode}>
-                    {country.name}
-                  </option>
-                ))
+                Country &&
+                  Country.getAllCountries().map((country) => (
+                    <option value={country.isoCode} key={country.isoCode}>
+                      {country.name}
+                    </option>
+                  ))
               }
             </select>
           </div>
@@ -41,12 +43,13 @@ const Shipping = () => {
             <select>
               <option value="">State</option>
               {
-                // Enter the code here for country dropdown                
-                State && State.getStatesOfCountry("US").map((state) => (
-                  <option value={state.isoCode} key={state.isoCode}>
-                    {state.name}
-                  </option>
-                ))
+                // Enter the code here for country dropdown
+                State &&
+                  State.getStatesOfCountry(countryCode).map((state) => (
+                    <option value={state.isoCode} key={state.isoCode}>
+                      {state.name}
+                    </option>
+                  ))
               }
             </select>
           </div>
@@ -54,7 +57,7 @@ const Shipping = () => {
             <label>Pin Code</label>
             <input type="number" placeholder="Enter Pincode" />
           </div>
-         
+
           <div>
             <label>Phone No.</label>
             <input type="number" placeholder="Enter Phone Number" />

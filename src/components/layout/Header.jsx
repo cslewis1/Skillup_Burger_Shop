@@ -5,7 +5,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
-const Header = ({ isAuthenticated = false }) => {
+const Header = () => {
   return (
     <>
       <nav>

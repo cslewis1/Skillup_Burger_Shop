@@ -30,19 +30,52 @@ import "./styles/table.scss";
 import "./styles/orderDetails.scss";
 import "./styles/about.scss";
 
-function App() {  
+function App() {
+  const [burger1, setBurger1] = useState(0);
+  const [burger2, setBurger2] = useState(0);
+  const [burger3, setBurger3] = useState(0);
+
+  //Function to increment the cart items
+  const increment = (item) => {
+    item === "burger1"
+      ? setBurger1(burger1 + 1)
+      : item === "burger2"
+      ? setBurger2(burger2 + 1)
+      : item === "burger3"
+      ? setBurger3(burger3 + 1)
+      : console.log("No item found");
+  };
+
+  //Function to decrement the cart items
+  const decrement = (item) => {
+    item === "burger1" && burger1 > 0
+      ? setBurger1(burger1 - 1)
+      : item === "burger2" && burger2 > 0
+      ? setBurger2(burger2 - 1)
+      : item === "burger3" && burger3 > 0
+      ? setBurger3(burger3 - 1)
+      : console.log("No item found");
+  };
 
   return (
     <Router>
       <Header isAuthenticated={true} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home increment={increment} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         // Add the Route for CART
         <Route
           path="/cart"
-          element={<Cart />}
+          element={
+            <Cart
+              increment={increment}
+              decrement={decrement}
+              burger1={burger1}
+              burger2={burger2}
+              burger3={burger3}
+            />
+          }
         />
         // Add the Route for SHIPPING
         <Route path="/shipping" element={<Shipping />} />
